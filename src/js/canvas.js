@@ -78,7 +78,7 @@ const StyledCanvas = css`
         images[name].onload = function () {
             resourceLoaded();
         }
-        images[name].src = `../images/${name}.png`;
+        images[name].src = `./images/${name}.png`;
     }
 
     function resourceLoaded() {
