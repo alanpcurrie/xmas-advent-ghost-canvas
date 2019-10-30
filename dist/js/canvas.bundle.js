@@ -1830,7 +1830,7 @@ var _createEmotion = Object(create_emotion__WEBPACK_IMPORTED_MODULE_0__["default
 "use strict";
 
 
-var _templateObject = _taggedTemplateLiteral(['\n  canvas {\n      box-sizing: border-box;\n      border: 2px solid #2e4c9d;\n      margin: 0;\n      background: linear-gradient(-45deg, #ea4630, #0aae9f, #777ba6, #F8B229);\n      background-size: 400% 400%;\n      animation: gradientBackground 5s ease infinite;\n}\n\n@keyframes gradientBackground {\n\t0% {\n\t\tbackground-position: 0% 50%;\n\t}\n\t50% {\n\t\tbackground-position: 100% 50%;\n\t}\n\t100% {\n\t\tbackground-position: 0% 50%;\n\t}\n}\n'], ['\n  canvas {\n      box-sizing: border-box;\n      border: 2px solid #2e4c9d;\n      margin: 0;\n      background: linear-gradient(-45deg, #ea4630, #0aae9f, #777ba6, #F8B229);\n      background-size: 400% 400%;\n      animation: gradientBackground 5s ease infinite;\n}\n\n@keyframes gradientBackground {\n\t0% {\n\t\tbackground-position: 0% 50%;\n\t}\n\t50% {\n\t\tbackground-position: 100% 50%;\n\t}\n\t100% {\n\t\tbackground-position: 0% 50%;\n\t}\n}\n']);
+var _templateObject = _taggedTemplateLiteral(['\n\n  canvas {\n    height: 100%;\n    background: linear-gradient(#2e4c9d, 30%, #777ba6) ;\n    overflow: hidden;\n    box-sizing: border-box;\n    border: 2px solid #2e4c9d;\n    margin: 0;\n}\n'], ['\n\n  canvas {\n    height: 100%;\n    background: linear-gradient(#2e4c9d, 30%, #777ba6) ;\n    overflow: hidden;\n    box-sizing: border-box;\n    border: 2px solid #2e4c9d;\n    margin: 0;\n}\n']);
 
 var _emotion = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/emotion.esm.js");
 
@@ -1851,7 +1851,7 @@ var breathDir = 1;
 var breathAmt = 0;
 var breathMax = 2;
 var breathInterval = setInterval(updateBreath, 1000 / fps);
-var maxEyeHeight = 14;
+var maxEyeHeight = 12;
 var curEyeHeight = maxEyeHeight;
 var eyeOpenTime = 0;
 var timeBtwBlinks = 4000;
@@ -1904,15 +1904,15 @@ function resourceLoaded() {
 
 function redraw() {
     canvas.width = canvas.width; // clears the canvas
-    drawEllipse(x + 21, y + 19, 165 - breathAmt, 6, 'rgba(235,232,223, 0.3)'); // Shadow
-    context.drawImage(images["leftArm"], x + 12, y - 40 - breathAmt);
-    context.drawImage(images["torso"], x - 75, y - 60);
-    context.drawImage(images["head"], x - 10, y - 125 - breathAmt);
-    context.drawImage(images["hat"], x - 18, y - 178 - breathAmt);
-    context.drawImage(images["rightArm"], x - 38, y - 36 - breathAmt);
+    drawEllipse(x + 24, y + 24, 165 - breathAmt, 6, '#252826'); // Shadow
+    context.drawImage(images["leftArm"], x - 20, y - 50 - breathAmt * 2);
+    context.drawImage(images["rightArm"], x + 30, y - 50 - breathAmt * 2);
+    context.drawImage(images["torso"], x - 10, y - 60);
+    context.drawImage(images["head"], x - 44, y - 115 - breathAmt);
+    context.drawImage(images["hat"], x - 34, y - 195 - breathAmt);
 
-    drawEllipse(x + 47, y - 68 - breathAmt, 8, curEyeHeight, '#252826'); // Left Eye
-    drawEllipse(x + 58, y - 68 - breathAmt, 8, curEyeHeight, '#252826'); // Right Eye
+    drawEllipse(x + 20, y - 68 - breathAmt, 8, curEyeHeight, '#252826'); // Left Eye
+    drawEllipse(x + 34, y - 68 - breathAmt, 8, curEyeHeight, '#252826'); // Right Eye
 }
 
 function drawEllipse(centerX, centerY, width, height, color) {

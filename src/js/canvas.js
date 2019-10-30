@@ -2,25 +2,14 @@
 import { css } from "emotion";
 
 const StyledCanvas = css`
-  canvas {
-      box-sizing: border-box;
-      border: 2px solid #2e4c9d;
-      margin: 0;
-      background: linear-gradient(-45deg, #ea4630, #0aae9f, #777ba6, #F8B229);
-      background-size: 400% 400%;
-      animation: gradientBackground 5s ease infinite;
-}
 
-@keyframes gradientBackground {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  canvas {
+    height: 100%;
+    background: linear-gradient(#2e4c9d, 30%, #777ba6) ;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 2px solid #2e4c9d;
+    margin: 0;
 }
 `;
 
@@ -37,7 +26,7 @@ const StyledCanvas = css`
     let breathAmt = 0;
     let breathMax = 2;
     let breathInterval = setInterval(updateBreath, 1000 / fps);
-    let maxEyeHeight = 14;
+    let maxEyeHeight = 12;
     let curEyeHeight = maxEyeHeight;
     let eyeOpenTime = 0;
     let timeBtwBlinks = 4000;
@@ -91,15 +80,16 @@ const StyledCanvas = css`
 
     function redraw() {
         canvas.width = canvas.width; // clears the canvas
-        drawEllipse(x + 21, y + 19, 165 - breathAmt, 6, 'rgba(235,232,223, 0.3)'); // Shadow
-        context.drawImage(images["leftArm"], x + 12, y - 40 - breathAmt);
-        context.drawImage(images["torso"], x - 75, y - 60);
-        context.drawImage(images["head"], x - 10, y - 125 - breathAmt);
-        context.drawImage(images["hat"], x - 18, y - 178 - breathAmt);
-        context.drawImage(images["rightArm"], x - 38, y - 36 - breathAmt);
+        drawEllipse(x + 24, y + 24, 165 - breathAmt, 6, '#252826'); // Shadow
+        context.drawImage(images["leftArm"], x - 20, y - 50 - breathAmt * 2);
+        context.drawImage(images["rightArm"], x + 30, y - 50 - breathAmt * 2);
+        context.drawImage(images["torso"], x - 10, y - 60);
+        context.drawImage(images["head"], x - 44, y - 115 - breathAmt);
+        context.drawImage(images["hat"], x - 34, y - 195 - breathAmt);
 
-        drawEllipse(x + 47, y - 68 - breathAmt, 8, curEyeHeight, '#252826'); // Left Eye
-        drawEllipse(x + 58, y - 68 - breathAmt, 8, curEyeHeight, '#252826'); // Right Eye
+
+        drawEllipse(x + 20, y - 68 - breathAmt, 8, curEyeHeight, '#252826'); // Left Eye
+        drawEllipse(x + 34, y - 68 - breathAmt, 8, curEyeHeight, '#252826'); // Right Eye
     }
 
     function drawEllipse(centerX, centerY, width, height, color) {
